@@ -27,8 +27,10 @@ def main() -> None:
         return
 
     if args.action == "publish-image-ecr":
-        opt_publish_image_ecr.run(args)
+        opt_publish_image_ecr.run(logger, args)
         return
+    
+    raise Exception("No debe ocurrir - IllegalState")
 
 
 def dump_log():
