@@ -41,7 +41,7 @@ def configure_logger(logger_name: str, logger_file: str) -> logging.Logger:
     logging.basicConfig(
         level=logging.DEBUG,
         format="%(asctime)s [%(levelname)s] %(message)s",
-        handlers=[logging.FileHandler(logger_file, mode="w")]
+        handlers=[logging.FileHandler(logger_file, mode="a")]
     )
     return logger
 
