@@ -90,43 +90,6 @@ def delete_file(fd: io.FileIO | str) -> bool:
         return False
 
 
-class DockerTagCmd:
-    """
-    Abstrae el comando de tagging de imagenes Docker.
-
-    Attributes:
-        tag_from    Tag de imagen origen.
-        tag_to      Tag para imagen destino.
-    """
-    tag_from: str
-    tag_to: str
-
-    def __init__(self):
-        self.tag_from = ""
-        self.tag_to = ""
-
-    def _to_cmd(self) -> list[str]:
-        args = list()
-        args.append("docker")
-        args.append("tag")
-        args.append(self.tag_from.strip())
-        args.append(self.tag_to.strip())
-        return args
-
-    def run(self) -> int:
-        tempfile = None
-        try:
-            with open("/tmp/output", "w") as tempfile:
-                proc = subprocess.run(
-                    self._to_cmd(),
-                    stderr=tempfile,
-                    stdout=tempfile
-                )
-                return proc.returncode
-        finally:
-            delete_file(tempfile)
-
-
 class DockerPushEcrCmd:
     """
     Abstrae la operación de publicación de imagenes Docker a un repositorio 
