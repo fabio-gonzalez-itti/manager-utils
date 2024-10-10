@@ -11,7 +11,7 @@ Ver la sección de [releases](https://github.com/fabio-gonzalez-itti/manager-uti
 Ejemplo de instalación con `pip`:
 
 ```
-pip install https://github.com/fabio-gonzalez-itti/manager-utils/releases/download/v0.0.1/manager_utils-0.0.1-py3-none-any.whl
+pip install https://github.com/fabio-gonzalez-itti/manager-utils/releases/download/v0.0.3/manager_utils-0.0.3-py3-none-any.whl
 ```
 
 ## Modo de Uso
