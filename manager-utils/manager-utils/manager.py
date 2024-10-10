@@ -6,7 +6,6 @@ from . import opt_dump_log
 from . import opt_exec
 from . import opt_publish_image_ecr
 
-
 def main() -> None:
     """
     Implementa la lógica central de la herramienta.
@@ -46,4 +45,4 @@ def main() -> None:
         opt_publish_image_ecr.run(logger, args)
         return
 
-    raise Exception("No debe ocurrir - IllegalState")
+    raise RuntimeError("No debe ocurrir - IllegalState")

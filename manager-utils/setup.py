@@ -10,5 +10,6 @@ setup(
     author_email='fabio.gonzalez@itti.digital',
     license='MIT',
     packages=['manager-utils'],
+    python_requires='>=3.10',
     install_requires=[]
 )

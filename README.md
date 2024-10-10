@@ -2,7 +2,7 @@
 Herramienta que permite simplificar operaciones relacionadas al despliegue de aplicaciones en entornos cloud.
 
 ## Requerimientos
-- Python 3.
+- Python 3.10 o superior.
 - AWS CLI, versión `2.x.x` o superior.
 
 ## Instalación
