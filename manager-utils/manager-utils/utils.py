@@ -90,6 +90,31 @@ def delete_file(fd: io.FileIO | str) -> bool:
         return False
 
 
+def simple_exec(cmd: list[str], shell: bool = False) -> tuple[int, str]:
+    # Ejecutar comando principal.
+    tempfile = None
+    tmpfilename = str(uuid.uuid4())
+    try:
+        retcode = -1
+        with open(f"/tmp/{tmpfilename}", "w") as tempfile:
+            proc = subprocess.run(
+                cmd,
+                shell=shell,
+                stderr=tempfile,
+                stdout=tempfile
+            )
+            retcode = proc.returncode
+
+        retcontent = ""
+        if shell == False:
+            with open(f"/tmp/{tmpfilename}", "r") as tempfile:
+                retcontent = tempfile.read()
+
+        return (retcode, retcontent)
+    finally:
+        delete_file(tempfile)
+
+
 class DockerPushEcrCmd:
     """
     Abstrae la operación de publicación de imagenes Docker a un repositorio 

@@ -5,6 +5,7 @@ from . import opt_clear_log
 from . import opt_dump_log
 from . import opt_exec
 from . import opt_publish_image_ecr
+from . import opt_check_image_exists
 
 def main() -> None:
     """
@@ -12,7 +13,7 @@ def main() -> None:
     """
     # Configuración de parámetros de línea de comandos.
     parser = argparse.ArgumentParser(prog="manager", description="Gestión remota")
-    parser.add_argument("--action", type=str, required=True, choices=["log", "clear-log", "dump-log", "exec", "publish-image-ecr"], help="Acción a realizar.")
+    parser.add_argument("--action", type=str, required=True, choices=["log", "clear-log", "dump-log", "exec", "check-image-exists", "publish-image-ecr"], help="Acción a realizar.")
     parser.add_argument("--cwd", type=str, required=False, help="Carpeta de trabajo para ciertas acciones que lo requieran.")
     parser.add_argument("--msg", type=str, required=False, help="Texto arbitrario para ciertas acciones que lo requieran.")
     parser.add_argument("--image-name", type=str, required=False, help="Nombre de imagen, dependiendo de la accióna a realizar puede incluir la versión de la misma.")
@@ -39,6 +40,10 @@ def main() -> None:
 
     if args.action == "exec":
         opt_exec.run(logger, args)
+        return
+
+    if args.action == "check-image-exists":
+        opt_check_image_exists.run(logger, args)
         return
 
     if args.action == "publish-image-ecr":

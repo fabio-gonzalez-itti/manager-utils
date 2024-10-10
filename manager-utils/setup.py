@@ -11,5 +11,5 @@ setup(
     license='MIT',
     packages=['manager-utils'],
     python_requires='>=3.10',
-    install_requires=[]
+    install_requires=["docker>=7.1.0"]
 )
